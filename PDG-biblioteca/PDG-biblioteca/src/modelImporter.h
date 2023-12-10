@@ -10,7 +10,7 @@
 
 unsigned int TextureFromFile(const char *path, const string &directory, bool gamma);
 
-class SABASAENGINE_API modelImporter
+class AQUISTAPACE_API modelImporter
 {
 private:
 	static void processNode(aiNode* node, Model* targetParent, mat4 accTransform, const aiScene* scene,Renderer* rend);

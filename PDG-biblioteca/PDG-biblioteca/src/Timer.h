@@ -1,7 +1,7 @@
 #pragma once
 #include "Exports.h"
 #include "GLFW/glfw3.h"
-class SABASAENGINE_API Timer
+class AQUISTAPACE_API Timer
 {
 private:
 	float timeBeforeStarting;

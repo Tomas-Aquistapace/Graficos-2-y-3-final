@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/vec3.hpp>
 #include "Exports.h"
-class SABASAENGINE_API Material
+class AQUISTAPACE_API Material
 {
 public:
     glm::vec3 _ambient;

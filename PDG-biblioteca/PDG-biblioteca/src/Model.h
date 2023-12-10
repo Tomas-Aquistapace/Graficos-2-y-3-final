@@ -7,7 +7,7 @@
 
 class BoundingBox;
 
-class SABASAENGINE_API Model : public Entity
+class AQUISTAPACE_API Model : public Entity
 {
 public:
 	string name;

@@ -7,7 +7,7 @@
 
 using namespace glm;
 using namespace std;
-class SABASAENGINE_API Entity
+class AQUISTAPACE_API Entity
 {
 protected:
 	mat4 translateMat;

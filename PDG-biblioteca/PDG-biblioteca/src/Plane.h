@@ -1,13 +1,16 @@
 #pragma once
 #include "Exports.h"
+
 #include <iostream>
 #include <glm/vec3.hpp>
 #include <glm/mat2x2.hpp>
-class SABASAENGINE_API Plane
+
+class AQUISTAPACE_API Plane
 {
+private:
 	// unit vector
-	
 	// distance from origin to the nearest point in the plane
+	
 	float     distance = 0.f;
 public:
 	glm::vec3 normal;

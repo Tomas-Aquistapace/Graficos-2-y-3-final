@@ -22,7 +22,7 @@ struct meshTexture {
     string path;
 };
 
-class SABASAENGINE_API Mesh
+class AQUISTAPACE_API Mesh
 {
 public:
     vector<Vertex> _vertices;

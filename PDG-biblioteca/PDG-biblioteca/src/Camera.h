@@ -7,7 +7,7 @@
 
 class Frustum;
 
-class SABASAENGINE_API Camera
+class AQUISTAPACE_API Camera
 {
 protected:
 	glm::vec3 _position;

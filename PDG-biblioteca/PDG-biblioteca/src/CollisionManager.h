@@ -21,12 +21,14 @@ struct CollisionResult
 	bool bottom;
 };
 
-class SABASAENGINE_API CollisionManager
+class AQUISTAPACE_API CollisionManager
 {
+private:
 	Collider a;
 	Collider b;
 	CollisionResult result;
 	bool isColliding();
+
 public:
 	bool CheckCollision(Shape* shapeA, Shape* ShapeB);
 	bool CheckCollision(Shape* shape, Sprite* sprite);

@@ -1,26 +1,27 @@
 #pragma once
 #include "BaseGame.h"
+
 class Game: BaseGame
 {
 private:
 	Timer* timer;
-	Shape* shapeA;
-	Shape* cubeA;
-	Shape* cubeB;
-	Shape* cubeC;
+	//Shape* shapeA;
+	//Shape* cubeA;
+	//Shape* cubeB;
+	//Shape* cubeC;
 	//test
-	Sprite* sprite1;
-	Sprite* sprite2;
-	TileMap* tileMap;
-	Animation* animation;
+	//Sprite* sprite1;
+	//Sprite* sprite2;
+	//TileMap* tileMap;
+	//Animation* animation;
 	Camera* _camera;
 	Lightning* _lightA;
 	Lightning* _lightB;
 	Lightning* _lightC;
 
-	Model* knuckles;
-	Model* gun;
-	Model* backpack;
+	//Model* knuckles;
+	//Model* gun;
+	//Model* backpack;
 	Model* pedrito;
 
 	vector<Plane*> planes;
@@ -51,6 +52,7 @@ private:
 	double mouseCurrentY;
 	double mousePitch;
 	double mouseYaw;
+
 public:
 	Game();
 	~Game();

@@ -1,11 +1,14 @@
 #pragma once
 #include "Tile.h"
 #include "Exports.h"
-#include <vector>
 #include "Shape.h"
 #include "CollisionManager.h"
-class SABASAENGINE_API TileMap: public Entity
+
+#include <vector>
+
+class AQUISTAPACE_API TileMap: public Entity
 {
+private:
 	Texture* textureUsed;
 	unsigned int texture;
 	vector<Tile*> tiles;
@@ -19,6 +22,7 @@ class SABASAENGINE_API TileMap: public Entity
 	bool correctlySet;
 	CollisionManager collMan;
 	bool collidesWithTileMap(Shape* shape);
+
 public:
 	TileMap(Renderer* renderer,int rows, int columns, const char* path, int imageHeight, int imageWidth, float tileWidth, float tileHeight);
 	~TileMap();

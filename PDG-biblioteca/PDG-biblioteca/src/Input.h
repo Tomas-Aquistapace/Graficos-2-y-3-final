@@ -3,7 +3,7 @@
 #include "Window.h"
 #include "GLFW/glfw3.h"
 
-class SABASAENGINE_API Input
+class AQUISTAPACE_API Input
 {
 	Window* window;
 public:

@@ -9,7 +9,7 @@
 using namespace glm;
 
 
-class SABASAENGINE_API Sprite : public Entity
+class AQUISTAPACE_API Sprite : public Entity
 {
 	Texture* textureUsed;
 	const int vertexAmount = 32;

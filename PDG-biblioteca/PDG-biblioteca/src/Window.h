@@ -3,7 +3,7 @@
 #include "Exports.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-class SABASAENGINE_API Window
+class AQUISTAPACE_API Window
 {
 public:
 	void createWindow(int screenWidth, int screenHeight, const char* title);

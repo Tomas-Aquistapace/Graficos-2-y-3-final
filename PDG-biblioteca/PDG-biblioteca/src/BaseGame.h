@@ -11,15 +11,17 @@
 #include "Camera.h"
 #include "Lightning.h"
 
-class SABASAENGINE_API BaseGame
+class AQUISTAPACE_API BaseGame
 {
 private:
 	Renderer* renderer;
 	CollisionManager collManager;
 	Input* input;
 	bool gameShouldClose;
+
 protected:
 	Window* window;
+
 public:
 	BaseGame();
 	~BaseGame();

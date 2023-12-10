@@ -37,16 +37,9 @@ void BaseGame::initBaseGame(int screenWidth, int screenHeight, const char* title
 
 	glfwSetInputMode(window->getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	
-	renderer->initVertexShader();
-	renderer->initFragmentShader();
+	renderer->initShaders("../PDG-biblioteca/res/shaders/MainShader_VS.shader", "../PDG-biblioteca/res/shaders/MainShader_FS.shader");
+
 	renderer->initShaderProgram();
-	
-	//quitado:
-	//renderer->setPosAttrib();	
-	//renderer->setTextureAttrib();
-	
-	//test VP
-	//renderer->setVP();
 }
 
 const float radius = 10.0f;
@@ -63,23 +56,20 @@ int BaseGame::engineLoop()
 		glClear(GL_DEPTH_BUFFER_BIT);
 		glClear(GL_DEPTH_BUFFER);
 		//game update
-		updateGame(collManager,input);
+		updateGame(collManager, input);
 		//engine input
 		if (input->isKeyDown(GLFW_KEY_ESCAPE))
 		{
 			gameShouldClose = true;
 		}
-		
+
 		//swap
 		glfwSwapBuffers(window->getWindow());
 		glfwPollEvents();
 	}
-	renderer->deleteShaderProgram();
-	renderer->deleteFragmentShader();
-	renderer->deleteVertexShader();
+
 	glfwTerminate();
-	
-	//game destroy
+
 	destroyGame();
 
 	return 0;

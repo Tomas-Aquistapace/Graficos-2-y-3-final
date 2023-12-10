@@ -7,7 +7,7 @@
 
 class Camera;
 
-class SABASAENGINE_API Frustum
+class AQUISTAPACE_API Frustum
 {
 public:
 	Frustum(Camera* cam, float aspect, float fovY, float zNear, float zFar);

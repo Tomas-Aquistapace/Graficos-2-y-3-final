@@ -10,7 +10,7 @@
 
 class Model;
 
-class SABASAENGINE_API BoundingBox : Entity
+class AQUISTAPACE_API BoundingBox : Entity
 {
 private:
 	bool isBeingRendered;
