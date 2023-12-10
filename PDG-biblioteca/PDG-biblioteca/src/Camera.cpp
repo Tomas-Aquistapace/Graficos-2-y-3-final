@@ -4,46 +4,61 @@
 Camera::Camera(Renderer* rend)
 {
 	_renderer = rend;
-	_position = glm::vec3(0.0f, 0.0f, 10.0f);
+	_position = glm::vec3(-1.0f, 0.0f, 0.0f);
 	_target = glm::vec3(0.0f, 0.0f, 0.0f);
-	_direction = glm::normalize(_target-_position);
-	_front = _direction;
-	_up = glm::vec3(0.0f, 1.0f, 0.0f);
-	_right = glm::normalize(glm::cross(_up,_front));
-	_up = glm::normalize(glm::cross(_right, _front));
+
+	//_renderer = rend;
+	//_position = glm::vec3(0.0f, 0.0f, 10.0f);
+	//_target = glm::vec3(0.0f, 0.0f, 0.0f);
+	//_direction = glm::normalize(_target-_position);
+	//_front = _direction;
+	//_up = glm::vec3(0.0f, 1.0f, 0.0f);
+	//_right = glm::normalize(glm::cross(_up,_front));
+	//_up = glm::normalize(glm::cross(_right, _front));
+
 	_frustum = new Frustum(this, 2.0f, 45.0f, 0.1f, 100.0f);
 }
 
-Camera::~Camera(){
+Camera::~Camera()
+{
 
 }
 
-void Camera::setTransform(){
+void Camera::setTransform()
+{
 	_renderer->updateView(_position,_front,_up);
 }
 
-void Camera::setPosition(glm::vec3 position) {
+void Camera::setPosition(glm::vec3 position) 
+{
 	_position = position;
 	setTransform();
 }
 
-glm::vec3 Camera::getPosition() {
+glm::vec3 Camera::getPosition() 
+{
 	return _position;
 }
 
-void Camera::setTarget(glm::vec3 target) {
+void Camera::setTarget(glm::vec3 target) 
+{
 	_target = target;
 	setTransform();
 }
-void Camera::setFront(glm::vec3 front) {
+
+void Camera::setFront(glm::vec3 front) 
+{
 	_front = front;
 	setTransform();
 }
 
-glm::vec3 Camera::getTarget() {
+glm::vec3 Camera::getTarget() 
+{
 	return _target;
 }
-glm::vec3 Camera::getFront() {
+
+glm::vec3 Camera::getFront()
+{
 	return _front;
 }
 
@@ -52,12 +67,26 @@ Frustum* Camera::getFrustum()
 	return _frustum;
 }
 
-glm::vec3 Camera::getUp() {
+glm::vec3 Camera::getUp() 
+{
 	return _up;
 }
 
-glm::vec3 Camera::getSide() {
+glm::vec3 Camera::getSide()
+{
 	return _right;
+}
+
+void Camera::setUp(glm::vec3 up)
+{
+	_up = up;
+	setTransform();
+}
+
+void Camera::setSide(glm::vec3 side)
+{
+	_right = side;
+	setTransform();
 }
 
 void Camera::moveOnWorld(glm::vec3 movement)

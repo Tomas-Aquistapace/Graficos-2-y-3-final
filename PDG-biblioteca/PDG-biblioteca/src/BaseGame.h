@@ -14,20 +14,24 @@
 class AQUISTAPACE_API BaseGame
 {
 private:
-	Renderer* renderer;
-	CollisionManager collManager;
-	Input* input;
-	bool gameShouldClose;
+	Renderer* _renderer;
+	CollisionManager _collManager;
+	bool _gameShouldClose;
 
 protected:
-	Window* window;
+	Window* _window;
 
 public:
 	BaseGame();
 	~BaseGame();
 	void initBaseGame(int screenWidth, int screenHeight, const char* title);
-	int engineLoop();
+	int engineLoop(float r, float g, float b, float a);
 	virtual void initGame(Renderer* renderer) = 0;
-	virtual void updateGame(CollisionManager collManager,Input* input) = 0;
+	virtual void updateGame(CollisionManager collManager) = 0;
 	virtual void destroyGame() = 0;
+
+	void exitApplication();
+
+	void activateFPSCamera(Camera* camera, float sensitivity);
+	void deactivateFPSCamera();
 };

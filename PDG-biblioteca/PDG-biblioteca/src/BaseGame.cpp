@@ -6,65 +6,59 @@ using namespace std;
 
 BaseGame::BaseGame()
 {
-	window = new Window();
-	renderer = new Renderer();
-	input = new Input(window);
-	gameShouldClose = false;
+	_window = new Window();
+	_renderer = new Renderer();
+	_gameShouldClose = false;
 }
 
 BaseGame::~BaseGame()
 {
-	if (window != NULL) {
-		delete window;
+	if (_window != NULL) {
+		delete _window;
 	}
-	if (renderer != NULL) {
-		delete renderer;
-	}
-	if (input != NULL) {
-		delete input;
+	if (_renderer != NULL) {
+		delete _renderer;
 	}
 }
 
 void BaseGame::initBaseGame(int screenWidth, int screenHeight, const char* title)
 {
 	glfwInit();
-	window->createWindow(screenWidth, screenHeight, title);
-	glfwMakeContextCurrent(window->getWindow());
+	_window->createWindow(screenWidth, screenHeight, title);
+	glfwMakeContextCurrent(_window->getWindow());
 	glewExperimental = GL_TRUE;
 	glewInit();
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
-	glfwSetInputMode(window->getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetInputMode(_window->getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	
-	renderer->initShaders("../PDG-biblioteca/res/shaders/MainShader_VS.shader", "../PDG-biblioteca/res/shaders/MainShader_FS.shader");
+	_renderer->initShaders("../PDG-biblioteca/res/shaders/MainShader_VS.shader", "../PDG-biblioteca/res/shaders/MainShader_FS.shader");
+	_renderer->initShaderProgram();
 
-	renderer->initShaderProgram();
+	Input::SetWindow(_window->getWindow());
 }
 
 const float radius = 10.0f;
 
-int BaseGame::engineLoop()
+int BaseGame::engineLoop(float r, float g, float b, float a)
 {
-	initGame(renderer);
+	initGame(_renderer);
 
-	while (!glfwWindowShouldClose(window->getWindow()) && !gameShouldClose)
+	while (!glfwWindowShouldClose(_window->getWindow()) && !_gameShouldClose)
 	{
 		//clear
-		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+		glClearColor(r, g, b, a);
 		glClear(GL_COLOR_BUFFER_BIT);
 		glClear(GL_DEPTH_BUFFER_BIT);
 		glClear(GL_DEPTH_BUFFER);
 		//game update
-		updateGame(collManager, input);
+		updateGame(_collManager);
 		//engine input
-		if (input->isKeyDown(GLFW_KEY_ESCAPE))
-		{
-			gameShouldClose = true;
-		}
+		Input::CheckClearInputList();
 
 		//swap
-		glfwSwapBuffers(window->getWindow());
+		glfwSwapBuffers(_window->getWindow());
 		glfwPollEvents();
 	}
 
@@ -73,4 +67,20 @@ int BaseGame::engineLoop()
 	destroyGame();
 
 	return 0;
+}
+
+
+void BaseGame::exitApplication()
+{
+	_gameShouldClose = true;
+}
+
+void BaseGame::activateFPSCamera(Camera* camera, float sensitivity)
+{
+	Input::ActivateFPSCamera(_window->getWindow(), camera, sensitivity);
+}
+
+void BaseGame::deactivateFPSCamera()
+{
+	Input::DeactivateFPSCamera(_window->getWindow());
 }
