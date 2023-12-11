@@ -27,19 +27,21 @@ Frustum::Frustum(Camera* cam, float aspect, float fovY, float zNear, float zFar)
 
 bool Frustum::pointInFrustum(glm::vec3 point)
 {
-	for (int i = 0; i < planes.size(); i++) {
-		if (planes[i]->IsOnPositiveNormal(point)) {
-		}
-		else {
+	for (int i = 0; i < planes.size(); i++) 
+	{
+		if (!planes[i]->IsOnPositiveNormal(point))
+		{
 			return false;
 		}
 	}
 	return true;
 }
 
-std::vector<Plane*> Frustum::getPlanes() {
+std::vector<Plane*> Frustum::getPlanes() 
+{
 	return planes;
 }
+
 Frustum::~Frustum()
 {
 

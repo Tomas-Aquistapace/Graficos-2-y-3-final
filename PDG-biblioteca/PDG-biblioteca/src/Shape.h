@@ -20,8 +20,10 @@ private:
 	void createRectangle();
 	void createTriangle();
 	void createCube();
+
 	unsigned int vertexAmount = 32;
 	unsigned int indexAmount = 6;
+
 	float recVerticesData[32] =
 	{
 		 0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f,  0.0f,  -1.0f,
@@ -67,13 +69,17 @@ private:
 		 0.5f,  0.5f,  0.5f,    1.0f, 1.0f,      0.0f,  1.0f,  0.0f, //22
 		-0.5f,  0.5f,  0.5f,    1.0f, 0.0f,      0.0f,  1.0f,  0.0f, //23
 	};
+
 	unsigned int vao;
 	unsigned int vbo;
 	unsigned int ebo;
 	unsigned int defaultTexture;
-	ShapeTypes _shapeType;
+	
 	float* vertexToUse;
+	
+	ShapeTypes _shapeType;
 	Material* mat;
+
 public:
 	Shape(ShapeTypes shapeType, Renderer* renderer);
 	Shape(ShapeTypes shapeType, Material newMat, Renderer* renderer);

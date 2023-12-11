@@ -3,18 +3,18 @@
 
 Camera::Camera(Renderer* rend)
 {
-	_renderer = rend;
-	_position = glm::vec3(-1.0f, 0.0f, 0.0f);
-	_target = glm::vec3(0.0f, 0.0f, 0.0f);
-
 	//_renderer = rend;
-	//_position = glm::vec3(0.0f, 0.0f, 10.0f);
+	//_position = glm::vec3(-1.0f, 0.0f, 0.0f);
 	//_target = glm::vec3(0.0f, 0.0f, 0.0f);
-	//_direction = glm::normalize(_target-_position);
-	//_front = _direction;
-	//_up = glm::vec3(0.0f, 1.0f, 0.0f);
-	//_right = glm::normalize(glm::cross(_up,_front));
-	//_up = glm::normalize(glm::cross(_right, _front));
+
+	_renderer = rend;
+	_position = glm::vec3(0.0f, 0.0f, 10.0f);
+	_target = glm::vec3(0.0f, 0.0f, 0.0f);
+	_direction = glm::normalize(_target-_position);
+	_front = _direction;
+	_up = glm::vec3(0.0f, 1.0f, 0.0f);
+	_right = glm::normalize(glm::cross(_up,_front));
+	_up = glm::normalize(glm::cross(_right, _front));
 
 	_frustum = new Frustum(this, 2.0f, 45.0f, 0.1f, 100.0f);
 }
